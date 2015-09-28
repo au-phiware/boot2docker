@@ -34,7 +34,7 @@ if modprobe vboxguest &> /dev/null && modprobe vboxsf &> /dev/null; then
 	}
 	
 	# bfirsh gets most the credit for this hacky workaround :)
-	VBoxControl sharedfolder list |
+	VBoxControl sharedfolder list -automount |
 		/bin/sed -n '/^[0-9]\+ - /{s///;s/^\(.\):\(.*\)$/\1\2 \0/;p}' |
 		while read dir name
 	do
